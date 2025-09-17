@@ -10,219 +10,188 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
-      background: url("背景图.jpg") no-repeat center center fixed; /* 替换为实际背景图路径，或用在线图床 */
+      /* 替换为你的背景图地址（本地/在线均可） */
+      background: url("背景图.jpg") no-repeat center center fixed;
       background-size: cover;
       min-height: 100vh;
-      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "PingFang SC", sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 15px;
     }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin: clamp(15px, 3vw, 25px) 0;
-      width: 100%;
-      max-width: 500px;
-    }
-
     .logo {
-      width: clamp(60px, 12vw, 80px);
-      height: clamp(60px, 12vw, 80px);
-      background: url("logo.png") no-repeat center center; /* 替换为实际logo路径，或用在线图床 */
-      background-size: contain;
+      width: 180px;
+      height: auto;
+      margin: 10px 0;
     }
-
-    .title-container {
+    .title-group {
       text-align: center;
-      margin: clamp(10px, 2vw, 20px) 0;
-      width: 100%;
-      max-width: 500px;
+      margin-bottom: 15px;
     }
-
-    .title {
+    .main-title {
       color: white;
-      font-size: clamp(24px, 5vw, 28px);
-      margin: 0 0 clamp(8px, 1vw, 10px) 0;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      font-size: 24px;
+      margin-bottom: 8px;
     }
-
-    .subtitle {
+    .sub-title {
       color: white;
-      font-size: clamp(16px, 3vw, 18px);
-      margin: 0 0 clamp(8px, 1vw, 10px) 0;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      font-size: 16px;
+      opacity: 0.9;
     }
-
-    .sub-subtitle {
-      color: white;
-      font-size: clamp(14px, 3vw, 16px);
-      margin: 0;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .form-box {
+    .form-container {
       width: 100%;
       max-width: 500px;
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 20px;
       padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      backdrop-filter: blur(5px);
     }
-
+    select, textarea {
+      width: 100%;
+      padding: 14px 22px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 35px;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      outline: none;
+      appearance: none; /* 清除下拉框默认箭头 */
+    }
+    /* 自定义下拉框箭头（用SVG实现） */
     select {
-      width: 100%;
-      padding: clamp(12px, 3vw, 15px) clamp(15px, 4vw, 20px);
-      margin: clamp(10px, 2vw, 12px) 0;
-      border: none;
-      border-radius: 30px;
-      font-size: clamp(14px, 3vw, 16px);
-      background-color: rgba(255, 255, 255, 0.7);
-      color: #333;
-      outline: none;
-      transition: all 0.3s;
-      appearance: none; /* 隐藏默认下拉箭头 */
-      -webkit-appearance: none;
-      /* 自定义下拉箭头（SVG） */
-      background-image: url("data:image/svg+xml;utf8,<svg fill='%23333' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-      background-repeat: no-repeat;
-      background-position: right clamp(15px, 4vw, 20px) center;
-      background-size: clamp(16px, 3vw, 20px);
+      background: rgba(255, 255, 255, 0.9) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M6 8L0 2h12z' fill='%23666'/%3E%3C/svg%3E") no-repeat right 20px center;
+      background-size: 12px 8px;
+      padding-right: 40px; /* 给箭头留空间 */
     }
-
-    select:focus {
-      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-    }
-
     textarea {
-      width: 100%;
-      padding: clamp(12px, 3vw, 15px) clamp(15px, 4vw, 20px);
-      margin: clamp(10px, 2vw, 12px) 0;
-      border: none;
-      border-radius: 20px;
-      font-size: clamp(14px, 3vw, 16px);
-      background-color: rgba(255, 255, 255, 0.7);
-      color: #333;
-      outline: none;
-      transition: all 0.3s;
-      resize: none; /* 禁止手动调整高度 */
-      min-height: 150px; /* 保证输入区域高度 */
+      border-radius: 20px; /* 文本域用圆角，更柔和 */
+      min-height: 120px;
+      resize: none; /* 禁止手动拉伸 */
     }
-
-    textarea::placeholder {
+    ::placeholder {
       color: #666;
     }
-
-    textarea:focus {
-      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
-    }
-
     .privacy {
       color: white;
-      font-size: clamp(12px, 2vw, 14px);
+      font-size: 13px;
       text-align: center;
-      margin: clamp(12px, 3vw, 15px) 0;
+      margin: 12px 0;
       line-height: 1.5;
     }
-
     .submit-btn {
       width: 100%;
-      max-width: 300px;
-      padding: clamp(12px, 3vw, 15px);
+      padding: 14px;
       background-color: rgba(180, 212, 252, 0.8);
       border: none;
-      border-radius: 30px;
+      border-radius: 35px;
       color: #333;
-      font-size: clamp(16px, 3vw, 18px);
+      font-size: 17px;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s;
-      margin-top: 10px;
+      transition: background-color 0.3s;
+      margin-top: 5px;
     }
-
     .submit-btn:hover {
       background-color: rgba(144, 193, 249, 0.9);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(179, 212, 252, 0.5);
     }
-
     .success-tip {
       display: none;
       color: white;
-      font-size: clamp(16px, 3vw, 18px);
+      font-size: 17px;
       text-align: center;
-      margin-top: 20px;
-      padding: 20px;
+      margin-top: 15px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
     }
-
-    /* 小屏幕适配 */
-    @media (max-width: 480px) {
-      .form-box {
-        padding: 15px;
-      }
-      
-      select, textarea {
-        padding: 12px 15px;
-        margin: 8px 0;
-      }
+    .footer {
+      color: white;
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: center;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
-  <div class="logo-container">
-    <div class="logo"></div>
+  <!-- Logo区域 -->
+  <img src="logo.png" alt="途羚公寓Logo" class="logo">
+  
+  <!-- 标题区域 -->
+  <div class="title-group">
+    <h1 class="main-title">公寓住户反馈</h1>
+    <p class="sub-title">请留下您的宝贵意见</p>
   </div>
-
-  <div class="title-container">
-    <h1 class="title">途羚公寓</h1>
-    <p class="subtitle">公寓住户反馈</p>
-    <p class="sub-subtitle">请留下您的宝贵意见</p>
-  </div>
-
-  <div class="form-box">
-    <form id="feedback-form" action="" method="post">
-      <select name="store" id="store" required>
-        <option value="" disabled selected>反馈门店(例:上海XX门店)</option>
-        <option value="上海XX门店1">上海XX门店1</option>
-        <option value="上海XX门店2">上海XX门店2</option>
-        <option value="上海XX门店3">上海XX门店3</option>
+  
+  <!-- 表单区域 -->
+  <div class="form-container">
+    <form id="feedback-form" action="https://formspree.io/f/xkgvlzba" method="POST">
+      <!-- 反馈门店（仅2个选项） -->
+      <select name="反馈门店" required>
+        <option value="" disabled selected>途羚反馈门店</option>
+        <option value="上海XX店">上海民生路店</option>
+        <option value="广州XX店">广州草芳围店</option>
       </select>
-      <select name="problem" id="problem" required>
+      
+      <!-- 遇到的问题 -->
+      <select name="遇到的问题" required>
         <option value="" disabled selected>遇到的问题</option>
         <option value="卫生">卫生</option>
         <option value="设备">设备</option>
         <option value="服务">服务</option>
       </select>
-      <textarea name="description" id="description" placeholder="请详细描述您的问题" required></textarea>
+      
+      <!-- 详细描述 -->
+      <textarea name="问题描述" placeholder="请详细描述您的问题" required></textarea>
+      
       <div class="privacy">
         <strong>隐私承诺</strong><br>
-        您的信息仅用于问题处理，我们严格保密
+        您的信息仅用于服务优化，我们严格保密
       </div>
+      
       <button type="submit" class="submit-btn">提交</button>
     </form>
+    <div class="success-tip" id="successTip">提交成功，感谢您的反馈～</div>
+  </div>
 
-    <div class="success-tip" id="successTip">提交完成！感谢您的反馈～</div>
+  <div class="footer">
+    衷心感谢您为【途羚公寓】提供的宝贵意见与专业建议!
   </div>
 
   <script>
-    // 表单提交逻辑（可替换为对接腾讯问卷/自有后端的实际接口）
     const form = document.getElementById('feedback-form');
     const successTip = document.getElementById('successTip');
-    
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
 
-      // 模拟异步提交（实际项目中替换为 fetch/axios 等真实请求）
-      setTimeout(() => {
-        form.style.display = 'none';
-        successTip.style.display = 'block';
-      }, 800);
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault(); // 阻止默认提交跳转
+      
+      const formspreeUrl = form.action;
+      const formData = new FormData(form);
+      
+      try {
+        // 提交数据到Formspree
+        const response = await fetch(formspreeUrl, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // 提交成功：隐藏表单，显示提示
+          form.style.display = 'none';
+          successTip.style.display = 'block';
+        } else {
+          alert('提交失败，请稍后重试');
+        }
+      } catch (error) {
+        console.error('提交异常:', error);
+        alert('网络错误，请检查网络连接');
+      }
     });
   </script>
 </body>
